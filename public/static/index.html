@@ -1,0 +1,219 @@
+<!--
+<!doctype html>
+
+
+<html ng-app="scotchTodo">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Node/Angular Todo App</title>
+
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <style>
+        html 					{ overflow-y:scroll; }
+        body 					{ padding-top:50px; }
+        #todo-list 				{ margin-bottom:30px; }
+        #todo-form 	 			{ margin-bottom:50px; }
+    </style>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="core.js"></script>
+
+</head>
+
+<body ng-controller="mainController">
+<div class="container">
+
+
+    <div class="jumbotron text-center">
+        <h1>I'm a Todo-aholic <span class="label label-info">{{ todos.length }}</span></h1>
+    </div>
+
+
+    <div id="todo-list" class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+
+
+            <div class="checkbox" ng-repeat="todo in todos">
+                <label>
+                    <input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
+                </label>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id="todo-form" class="row">
+        <div class="col-sm-8 col-sm-offset-2 text-center">
+            <form>
+                <div class="form-group">
+
+
+                    <input type="text" class="form-control input-lg text-center" placeholder="I want to buy a puppy that will love me forever" ng-model="formData.text">
+                </div>
+
+
+                <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="text-center text-muted">
+        <p>A demo by <a href="http://scotch.io">Scotch</a>.</p>
+        <p>Read the <a href="http://scotch.io/tutorials/javascript/creating-a-single-page-todo-app-with-node-and-angular">tutorial</a>.</p>
+    </div>
+
+</div>
+
+</body>
+</html>
+        -->
+
+
+
+
+
+<!--
+<!doctype html>
+<html ng-app="project">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.8/angular-resource.min.js">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.8/angular-route.min.js">
+    </script>
+    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.5.0/angularfire.min.js"></script>
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="/routes/project.js"></script>
+</head>
+<body>
+<h2>JavaScript Projects</h2>
+<div ng-view></div>
+</body>
+</html>
+
+-->
+<!--
+<!doctype html>
+<html ng-app="todo">
+ <head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.10/angular.min.js"></script>
+
+<script src="todo.js"></script>
+<link rel="stylesheet" href="todo.css">
+</head>
+<body>
+	    <h2>Todo</h2>
+	    <div ng-controller="TodoCtrl">
+	      <span>{{remaining()}} of {{todos.length}} remaining</span>
+	      [ <a href="" ng-click="archive()">archive</a> ]
+	      <ul class="unstyled">
+	        <li ng-repeat="todo in todos">
+	          <input type="checkbox" ng-model="todo.done">
+	          <span class="done-{{todo.done}}">{{todo.text}}</span>
+	        </li>
+	      </ul>
+	      <form ng-submit="addTodo()">
+	        <input type="text" ng-model="todoText"  size="30"
+	               placeholder="add new todo here">
+	        <input class="btn-primary" type="submit" value="add">
+	      </form>
+	    </div>
+	  </body>
+	</html>
+-->
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>AngularJS Plunker</title>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.js"></script>
+    <script src="http://code.angularjs.org/1.2.4/angular-route.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+    <script type="text/javascript" src="/routes/restangular.js"></script>
+    <script src="/routes/project.js"></script>
+</head>
+
+<body>
+<div ng-app="project">
+    <h2><a target="_blank" href="https://github.com/mgonto/restangular">Restangular Example. Click here to check out the library</a></h2>
+    <h2>JavaScript Projects. <a href="http://angularjs.org/#wire-up-a-backend" target="_blank">Based on AngularJS's sample</a></h2>
+    <div ng-view></div>
+
+
+
+    <!-- CACHE FILE: list.html-->
+    <script type="text/ng-template" id="list.html">
+        <input type="text" ng-model="search" class="search-query" placeholder="Search">
+        <table>
+            <thead>
+            <tr>
+                <th>Project</th>
+                <th>Description</th>
+                <th><a href="#/new"><i class="icon-plus-sign"></i></a></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="project in projects | filter:search | orderBy:'name'" ng-show="project._id.$oid">
+                <td><a href="{{project.site}}" target="_blank">{{project.name}}</a></td>
+                <td>{{project.description}}</td>
+                <td>
+                    <a href="#/edit/{{project._id.$oid}}"><i class="icon-pencil"></i></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </script>
+
+
+
+    <!-- CACHE FILE: detail.html-->
+    <script type="text/ng-template" id="detail.html">
+        <form name="myForm">
+            <div class="control-group" ng-class="{error: myForm.name.$invalid}">
+                <label>Name</label>
+                <input type="text" name="name" ng-model="project.name" required>
+          <span ng-show="myForm.name.$error.required" class="help-inline">
+              Required</span>
+            </div>
+
+            <div class="control-group" ng-class="{error: myForm.site.$invalid}">
+                <label>Website</label>
+                <input type="url" name="site" ng-model="project.site" required>
+          <span ng-show="myForm.site.$error.required" class="help-inline">
+              Required</span>
+          <span ng-show="myForm.site.$error.url" class="help-inline">
+              Not a URL</span>
+            </div>
+
+            <label>Description</label>
+            <textarea name="description" ng-model="project.description"></textarea>
+
+            <br>
+            <a href="#/" class="btn">Cancel</a>
+            <button ng-click="save()" ng-disabled="isClean() || myForm.$invalid"
+                    class="btn btn-primary">Save</button>
+            <button ng-click="destroy()"
+                    ng-show="project._id" class="btn btn-danger">Delete</button>
+        </form>
+    </script>
+</div>
+
+</body>
+
+</html>
