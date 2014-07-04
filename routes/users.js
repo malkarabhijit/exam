@@ -5,5 +5,7 @@ var router = express.Router();
 router.get('/', function(req, res) {
   res.send('respond with a resource');
 });
-
+router.get('/change', function(req, res) {
+  res.send('changed on git added on master only');
+});
 module.exports = router;
